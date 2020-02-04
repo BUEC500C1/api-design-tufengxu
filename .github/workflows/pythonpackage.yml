@@ -22,8 +22,6 @@ jobs:
         pip freeze > requirements.txt
         pip install -r requirements.txt
         pip install requests
-        pip install csv
-        pip install json
     - name: Lint with flake8
       run: |
         pip install flake8
