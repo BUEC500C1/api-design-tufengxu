@@ -19,8 +19,8 @@ def main():
     geo_info = get_airport_info(file_name, "KBOS")
 
     assert get_weather_info(user_api, geo_info)['City name'] == 'Winthrop'
-    assert get_weather_info(user_api, get_airport_info(file_name, "KBOS"))['Latitude'] - 42.38 < 1
-    assert get_weather_info(user_api, get_airport_info(file_name, "KBOS"))['Weather description'] == 'Clouds'
+#     assert get_weather_info(user_api, get_airport_info(file_name, "KBOS"))['Latitude'] - 42.38 < 1
+#     assert get_weather_info(user_api, get_airport_info(file_name, "KBOS"))['Weather description'] == 'Clouds'
 
 
 if __name__ == '__main__':
