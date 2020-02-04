@@ -50,9 +50,9 @@ def get_airport_info(file_name, airport_ident):
     return ''
 
 
-def test_cityname(air_id):
-    city_name = get_weather_info(api_key, get_airport_info(file_name, air_id))['City name']
-    return city_name
+def cityname(air_id):
+    city = get_weather_info(api_key, get_airport_info(file_name, air_id))['City name']
+    return city
 
 
 if __name__ == '__main__':
