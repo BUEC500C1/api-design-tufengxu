@@ -3,6 +3,10 @@ import csv
 import json
 
 
+api_key = 'a78abfab06d3f73865da94e3ff663935'
+file_name = 'airports.csv'
+
+
 def get_weather_info(api_key, geo_info):
     url = "http://api.openweathermap.org/data/2.5/weather?" +\
           "lat=" + geo_info[0] + "&lon=" + geo_info[1] + "&APPID=" + api_key
@@ -44,3 +48,21 @@ def get_airport_info(file_name, airport_ident):
             geo_info = (row[4], row[5], row[3])
             return geo_info
     return ''
+
+
+def test_cityname(air_id):
+    city_name = get_weather_info(api_key, get_airport_info(file_name, air_id))['City name']
+    return city_name
+
+
+if __name__ == '__main__':
+    wea_dict = {}
+    airport = 'KBOS'
+    geo_info = get_airport_info(file_name, airport)
+    wea_dict['Airport name'] = geo_info[2]
+    wea_dict['Airport ident'] = airport
+    wea_ = get_weather_info(api_key, geo_info)
+    for key in wea_:
+        wea_dict[key] = wea_[key]
+    for key in wea_dict:
+        print(key + ': ' + str(wea_dict[key]))
