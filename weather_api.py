@@ -3,7 +3,7 @@ import csv
 import json
 
 
-api_key = 'a78abfab06d3f73865da94e3ff663935'
+api_key = "your api key"
 file_name = 'airports.csv'
 
 
