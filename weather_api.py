@@ -40,11 +40,11 @@ def get_weather_info(api_key, geo_info):
     return weather
 
 
-def get_airport_info(file_name, airport_ident):
+def get_airport_info(file_name, airport):
     f = open(file_name, 'r')
     reader = csv.reader(f)
     for row in reader:
-        if row[1] == airport_ident:
+        if row[1] == airport || row[3] == airport:
             geo_info = (row[4], row[5], row[3])
             return geo_info
     return ''
