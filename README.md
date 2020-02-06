@@ -20,3 +20,19 @@ I, as a traveler, would like to use this API to get the real-time weather inform
 
 * Python   
 * OpenweatherMap API
+
+## Example
+1. Install related libraries in Python
+* requests
+* csv
+* json
+
+2. Add the API key of OpenWeather API to the code 
+  ```Python
+  api_key = 'XXXXXXXXXXXXXXXXXX'
+  ```
+3. Open terminal and navigate to location of code
+
+4. Input the airport identifier or the airport name, and then run the code and 
+5. Example result:
+            <img src="example result.png">       
