@@ -3,11 +3,14 @@ import csv
 import json
 
 
-api_key = "your api key"
+api_key = 'your api key'
 file_name = 'airports.csv'
 
 
 def get_weather_info(api_key, geo_info):
+  if geo_info == 'Not found the airport you entered':
+    return 'Not found the airport you entered'
+  else:
     url = "http://api.openweathermap.org/data/2.5/weather?" +\
           "lat=" + geo_info[0] + "&lon=" + geo_info[1] + "&APPID=" + api_key
     re1 = requests.get(url)
@@ -41,28 +44,31 @@ def get_weather_info(api_key, geo_info):
 
 
 def get_airport_info(file_name, airport):
-    f = open(file_name, 'r')
-    reader = csv.reader(f)
-    for row in reader:
-        if row[1] == airport || row[3] == airport:
-            geo_info = (row[4], row[5], row[3])
-            return geo_info
-    return ''
+  f = open(file_name, 'r')
+  reader = csv.reader(f)
+  for row in reader:
+    if (row[1] == airport) or (row[3] == airport):
+      geo_info = (row[4], row[5], row[3], row[1])
+      return geo_info
+  return 'Not found the airport you entered'
 
 
 def cityname(air_id):
-    city = get_weather_info(api_key, get_airport_info(file_name, air_id))['City name']
-    return city
+  city = get_weather_info(api_key, get_airport_info(file_name, air_id))['City name']
+  return city
 
 
 if __name__ == '__main__':
-    wea_dict = {}
-    airport = 'KBOS'
-    geo_info = get_airport_info(file_name, airport)
-    wea_dict['Airport name'] = geo_info[2]
-    wea_dict['Airport ident'] = airport
-    wea_ = get_weather_info(api_key, geo_info)
+  wea_dict = {}
+  airport = 'General Edward Lawrence Logan International Airport'
+  geo_info = get_airport_info(file_name, airport)
+  wea_dict['Airport name'] = geo_info[2]
+  wea_dict['Airport ident'] = geo_info[3]
+  wea_ = get_weather_info(api_key, geo_info)
+  if type(wea_) != str:
     for key in wea_:
-        wea_dict[key] = wea_[key]
+      wea_dict[key] = wea_[key]
     for key in wea_dict:
-        print(key + ': ' + str(wea_dict[key]))
+      print(key + ': ' + str(wea_dict[key]))
+  else:
+    print(wea_)
