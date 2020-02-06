@@ -35,4 +35,9 @@ I, as a traveler, would like to use this API to get the real-time weather inform
 
 4. Input the airport identifier or the airport name, and then run the code and 
 5. Example result:
-            <img src="example result.png">       
+* Input airport name "General Edward Lawrence Logan International Airport"
+            <img src="example1.png">       
+* Input airport identifier "4MA5"
+            <img src="example2.png">   
+* Input an invalid airport name "XXXXXXXXX airport"
+            <img src="example3.png">   
